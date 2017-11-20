@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="registrationApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular Registration</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/vendors/angular/angular.min.js"> </script>
+  <script src="js/vendors/angular/angular-route.min.js"> </script>
+  <script src="js/vendors/angular/angular-animate.min.js"> </script>
+  
+<!-- app.jsj file sourced in -->
+  <script src="js/app.js"> </script>
+  
+</head>
+<body>
+<header></header>
+<div class="page">
+  <!-- this is where most of the content will reside. -->
+  <main class="cf" ng-controller="appController">
+    <!-- this is $scope.message in app.js -->
+    {{ message }}
+  </main>
+</div>
+</body>
+</html>
