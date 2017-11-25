@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Angular Registration</title>
 
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
+
   <link rel="stylesheet" href="css/style.css">
   <script src="js/vendors/angular/angular.min.js"> </script>
   <script src="js/vendors/angular/angular-route.min.js"> </script>
@@ -13,15 +15,19 @@
   
 <!-- app.jsj file sourced in -->
   <script src="js/app.js"> </script>
+<!-- Registration Controller --> 
+  <script src="js/controllers/registration.controller.js"></script>   <script src="js/controllers/success.controller.js"></script>  
   
 </head>
 <body>
 <header></header>
 <div class="page">
-  <!-- this is where most of the content will reside. -->
-  <main class="cf" ng-controller="appController">
+  <!--This is where most of the content will reside. 
+      The diffrent views or templates will be inserted at this tag, where ng-view is placed. 
+      This view is going to be controlled by the routing mechanism, ngRoute. -->
+  <main class="cf" ng-view>
     <!-- this is $scope.message in app.js -->
-    {{ message }}
+   
   </main>
 </div>
 </body>
