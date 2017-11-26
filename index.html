@@ -9,18 +9,39 @@
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="css/style.css">
+<!-- angular scripts --> 
   <script src="js/vendors/angular/angular.min.js"> </script>
   <script src="js/vendors/angular/angular-route.min.js"> </script>
   <script src="js/vendors/angular/angular-animate.min.js"> </script>
-  
-<!-- app.jsj file sourced in -->
+
+<!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB0JLtcBmd0lg7-vbSf-CDs22ZPUg1U7KE",
+      authDomain: "angular-registration-app-72f8d.firebaseapp.com",
+      databaseURL: "https://angular-registration-app-72f8d.firebaseio.com",
+      projectId: "angular-registration-app-72f8d",
+      storageBucket: "angular-registration-app-72f8d.appspot.com",
+      messagingSenderId: "117816181333"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+<!-- AngularFire2 -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
+<!-- app.js file sourced in -->
   <script src="js/app.js"> </script>
 <!-- Registration Controller --> 
   <script src="js/controllers/registration.controller.js"></script>   <script src="js/controllers/success.controller.js"></script>  
   
 </head>
 <body>
-<header></header>
+<header>
+  <!-- ng-include brings the nav bar into the register and login views -->
+  <nav class="cf" ng-include="'views/nav.html'"></nav>
+</header>
 <div class="page">
   <!--This is where most of the content will reside. 
       The diffrent views or templates will be inserted at this tag, where ng-view is placed. 
