@@ -50,6 +50,11 @@
   <!--This is where most of the content will reside. 
       The diffrent views or templates will be inserted at this tag, where ng-view is placed. 
       This view is going to be controlled by the routing mechanism, ngRoute. -->
+
+  <!-- The ng-show="currentUser" directive only shows the content in the div its in IF the variable currentUser exists.  currentUser is created when a user signs in successfully.  It is not created is the signin if unsuccessful. --> 
+  <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
+    <span class="userinfo">Hi {{currentUser.firstname}}</span>
+  </div>
   <main class="cf" ng-view>
     <!-- this is $scope.message in app.js -->
    
