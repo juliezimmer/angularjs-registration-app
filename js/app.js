@@ -2,7 +2,7 @@
 //This is just a variable that will refer to the application. 
 //This var holds an angular module.
 //The angular module will reference the app name: registrationApp.
-var myApp = angular.module('registrationApp', ['ngRoute']);
+var myApp = angular.module('registrationApp', ['ngRoute','firebase']);
 
 myApp.config(['$routeProvider', function($routeProvider){
   // function($routeProvider) runs whenever routes have to be declared, defined, or accessed.
