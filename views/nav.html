@@ -1,5 +1,6 @@
 <div class="branding"><a ng-href="#!/">angular JS</a></div>
 <ul>
-  <li><a ng-href="#!/login">Login</a></li>
-  <li><a ng-href="#!/register">Register</a></li>
+  <!-- The ng-hide="currentUser" directive hides the content of its tag if the there is a currentUser. currentUser is created when someone successfully logs in. So, if a user is logged in, Register and Login links will not be seen. -->
+  <li><a ng-hide="currentUser" ng-href="#!/login">Login</a></li>
+  <li><a ng-hide="currentUser" ng-href="#!/register">Register</a></li>
 </ul>

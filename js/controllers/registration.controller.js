@@ -9,6 +9,10 @@ myApp.controller('RegistrationController', ['$scope', 'Authentication', function
       //All that is needed to log in is to call the Authentication Service or factory and then issue the login method passing along the user's information from scope.  
       Authentication.login($scope.user);
     };
+
+    $scope.logout = function() {
+      Authentication.logout();
+    };
     //registration function that is called when Submit is clicked in register.html.
     $scope.register = function() { 
       Authentication.register($scope.user);

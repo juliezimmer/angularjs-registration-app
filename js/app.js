@@ -4,6 +4,16 @@
 //The angular module will reference the app name: registrationApp.
 var myApp = angular.module('registrationApp', ['ngRoute','firebase']);
 
+//This traps authentication events that can be used to give the user feedback on their status. 
+myApp.run(['$rootScope', '$location', function($rootScope, $location){
+  $rootScope.$on('$routeChangeError', function(event, next, previous, error){
+    if (error == 'AUTH_REQUIRED') {
+      $rootScope.message = 'You must be logged in to access that mmn page';
+      $location.path('/login');
+    } //end Auth_Required error
+  }); //end $routeChangeError
+}]); //end myApp.run
+
 myApp.config(['$routeProvider', function($routeProvider){
   // function($routeProvider) runs whenever routes have to be declared, defined, or accessed.
   $routeProvider
@@ -19,7 +29,12 @@ myApp.config(['$routeProvider', function($routeProvider){
     })
     .when('/success', {
       templateUrl: 'views/success.html',
-      controller: 'SuccessController'
+      controller: 'SuccessController',
+      resolve: {
+        currentAuth: function(Authentication) {
+          return Authentication.requireAuth();
+        }
+      }
     })
     //what to do when none of these paths is the requested Url 
     .otherwise({ //the default route

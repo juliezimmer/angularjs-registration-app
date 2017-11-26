@@ -10,6 +10,7 @@ myApp.factory('Authentication', ['$rootScope', '$location', '$firebaseObject', '
   //Another variable is needed for the Authentication.
   //This calls another method called firebase.
   var auth = $firebaseAuth();
+  var myObject;
 
   //onAuthStateChanged is a firebase method that is used to detect when a user has logged in.
   //The function passes on information about what the change has been.
@@ -30,11 +31,11 @@ myApp.factory('Authentication', ['$rootScope', '$location', '$firebaseObject', '
       //the userObj information is passed along using $rootScope.
       $rootScope.currentUser = userObj;
     } else {//if there is no authenticated, the $rootScope variable is set to an empty string
-        $rootScope.currentUser = "  ";
+        $rootScope.currentUser = '';
     }
-  })
-  
-  return {
+  });
+
+  myObject =  {
     login: function(user) {
       //auth is the same variable that was created on line 12 for firebase authentication methods.
       //Here, it is using a firebase method called signInWithEmailAndPassword.
@@ -49,6 +50,13 @@ myApp.factory('Authentication', ['$rootScope', '$location', '$firebaseObject', '
           $rootScope.message = error.message;
         }); //End signInWithEmailAndPassword 
       },
+    //creating a logout method
+    logout: function() {
+      return auth.$signOut();
+    },
+    requireAuth: function(){
+      return auth.$requireSignIn(); //this resolves to true is user is signed in.
+    },
     register: function(user) {
       //$createUserWithEmailAndPassword is a special firebase function.
       //The user's email and password are passed into the function as parameters.
@@ -73,13 +81,16 @@ myApp.factory('Authentication', ['$rootScope', '$location', '$firebaseObject', '
             firstname: user.firstname,
             lastname: user.lastname, 
             email: user.email
-          })
-        $rootScope.message = "Hi " +  user.firstname + " Thanks for registering!";
+          });
+        myObject.login(user);
       }).catch(function(error){
         $rootScope.message = error.message;
       }); //end createUserWithEmailAndPassword function
     } //end register
   }// end return statement
+  
+  
+  return myObject;
 }]); //end of factory
 
 
